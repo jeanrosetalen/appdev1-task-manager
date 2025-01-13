@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { db } from '../firebase.js'
 import { collection, addDoc, getDocs, updateDoc, doc, deleteDoc }from 'firebase/firestore'
+import { Signout } from './Signout.jsx'
 
 const ListTodos = ({ user }) => {
     const [loading, setLoading] = useState(true)
@@ -63,7 +64,8 @@ const ListTodos = ({ user }) => {
     return (
         <>
             <div>
-                <h3>Welcome, {user}</h3>
+                <h1>Todo React App</h1>
+                <h3>Welcome, {user.displayName || user.email} | <Signout /></h3>
                 <input type="text" value={newTodo} placeholder='Add todo' onChange={(e) => setNewTodo(e.target.value)} />
                 <button onClick={handleNewTodo}>Add</button>
 
